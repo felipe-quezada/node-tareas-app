@@ -2,13 +2,15 @@ import fs from 'node:fs';
 const DIR = './db/data.json';
 
 const writeData = (data) => {
-		fs.writeFileSync(DIR, JSON.stringify(data));
+		fs.existsSync(DIR)
+			? fs.writeFileSync(`${DIR}/data.json`, JSON.stringify(data))
+			: fs.mkdirSync(DIR);
 	},
 	readData = () => {
 		if (!fs.existsSync(DIR)) {
 			return null;
 		} else {
-			let rData = fs.readFileSync(DIR, { encoding: 'utf-8' });
+			let rData = fs.readFileSync(`${DIR}/data.json`, { encoding: 'utf-8' });
 			return JSON.parse(rData);
 		}
 	};
