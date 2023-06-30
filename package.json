@@ -1,0 +1,19 @@
+{
+  "name": "proyecto2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "mkdir db\nnode ./app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^9.2.7",
+    "inquirer-press-to-continue": "^1.2.0",
+    "uuid": "^9.0.0"
+  }
+}
