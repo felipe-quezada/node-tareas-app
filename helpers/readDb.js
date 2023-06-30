@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const DIR = './db/data.json';
+const DIR = './db';
 
 const writeData = (data) => {
 		fs.existsSync(DIR)
