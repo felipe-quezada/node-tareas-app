@@ -21,16 +21,16 @@ const main = async () => {
 				tareas.crearTarea(createTask);
 				break;
 			case 2:
-				tareas.listado;
+				console.log(tareas.listado);
 				await pause();
 				break;
 			case 3:
 				//console.table(await areDone(tareas));
-				tareas.doneList;
+				console.log(tareas.doneList);
 				await pause();
 				break;
 			case 4:
-				tareas.undoneList;
+				console.log(tareas.undoneList);
 				await pause();
 				break;
 			case 5:

@@ -7,7 +7,12 @@ class Tareas {
 	get listado() {
 		let array = [];
 		Object.keys(this._listado).forEach((value) => {
-			array.push(this._listado[value]);
+			array.push({
+				descripción: this._listado[value].desc,
+				'hora de realizacion': this._listado[value].realizado
+					? this._listado[value].completadoEn
+					: 'aún sin realizar',
+			});
 		});
 		if (array[0] == undefined) {
 			console.log('\nNo hay tareas creadas\n'.red);
@@ -29,20 +34,31 @@ class Tareas {
 	}
 
 	get doneList() {
-		let array = Object.values(this._listado).filter(
-			(value) => value.realizado?.valueOf() == true
-		);
+		let array = [];
+		Object.keys(this._listado).forEach((id) => {
+			if (this._listado[id].realizado) {
+				array.push({
+					descripición: this._listado[id].desc,
+					'hora de realizacion': this._listado[id].completadoEn,
+				});
+			}
+		});
 		if (array[0] == undefined) {
 			return console.log('\nNo hay tareas completadas\n'.red);
 		} else {
-			console.table(array);
+			return console.table(array);
 		}
 	}
 
 	get undoneList() {
-		let array = Object.values(this._listado).filter(
-			(value) => value.realizado?.valueOf() == false
-		);
+		let array = [];
+		Object.keys(this._listado).forEach((id) => {
+			if (!this._listado[id].realizado) {
+				array.push({
+					descripición: this._listado[id].desc,
+				});
+			}
+		});
 		if (array[0] == undefined) {
 			return console.log('\nTodas las tareas han sido realizadas\n'.green);
 		} else {
